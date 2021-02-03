@@ -23,7 +23,7 @@ public class ResponderModel {
         }
 
 
-        Matcher mayorMatcher = Pattern.compile(".*which of the following numbers is the largest:.*").matcher(question);
+        Matcher mayorMatcher = Pattern.compile(".* which of the following numbers is the largest: .*").matcher(question);
         if (mayorMatcher.matches()){
             String[] digitosPregunta = question.split(".*:");
             Matcher digitos = Pattern.compile("(\\d+)").matcher(digitosPregunta[1]);
@@ -37,7 +37,7 @@ public class ResponderModel {
             return mayor.toString();
         }
 
-        Matcher plusMatcher = Pattern.compile(".*: what is (\\d+) plus (\\d+):").matcher(question);
+        Matcher plusMatcher = Pattern.compile(".*: what is (\\d+) plus (\\d+)").matcher(question);
         if (plusMatcher.matches()) {
             return String.valueOf(Integer.parseInt(plusMatcher.group(1)) + Integer.parseInt(plusMatcher.group(2)));
         }

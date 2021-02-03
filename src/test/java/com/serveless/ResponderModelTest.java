@@ -17,7 +17,7 @@ public class ResponderModelTest {
     @Test
     public void answerWithQuestionPlus() {
         ResponderModel responder = new ResponderModel();
-        String pregunta = "6dff3ce0: what is 14 plus 2:";
+        String pregunta = "6dff3ce0: what is 14 plus 2";
         String respuesta = responder.answer(pregunta);
         Assertions.assertThat(respuesta).isEqualTo("16");
     }
