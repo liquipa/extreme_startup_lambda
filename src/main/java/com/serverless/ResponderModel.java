@@ -22,16 +22,25 @@ public class ResponderModel {
             return teamName;
         }
 
-        Matcher plusMatcher = Pattern.compile(".*: what is (\\d+) plus (\\d+):").matcher(question);
-        if (plusMatcher.matches()) {
-            if(Integer.parseInt(plusMatcher.group(1)) > Integer.parseInt(plusMatcher.group(2)) ){
-                return plusMatcher.group(1);
-            }else{
-                return plusMatcher.group(2);
-            }
 
+        Matcher mayorMatcher = Pattern.compile(".*which of the following numbers is the largest:.*").matcher(question);
+        if (mayorMatcher.matches()){
+            String[] digitosPregunta = question.split(".*:");
+            Matcher digitos = Pattern.compile("(\\d+)").matcher(digitosPregunta[1]);
+            Integer mayor = 0;
+            while (digitos.find()){
+                int iter = Integer.parseInt(digitos.group());
+                if (mayor < Integer.parseInt(digitos.group())){
+                    mayor = iter;
+                }
+            }
+            return mayor.toString();
         }
 
+        Matcher plusMatcher = Pattern.compile(".*: what is (\\d+) plus (\\d+):").matcher(question);
+        if (plusMatcher.matches()) {
+            return String.valueOf(Integer.parseInt(plusMatcher.group(1)) + Integer.parseInt(plusMatcher.group(2)));
+        }
 
         return teamName;
     }

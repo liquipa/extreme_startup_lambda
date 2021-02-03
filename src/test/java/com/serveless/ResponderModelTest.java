@@ -19,6 +19,14 @@ public class ResponderModelTest {
         ResponderModel responder = new ResponderModel();
         String pregunta = "6dff3ce0: what is 14 plus 2:";
         String respuesta = responder.answer(pregunta);
-        Assertions.assertThat(respuesta).isEqualTo("14");
+        Assertions.assertThat(respuesta).isEqualTo("16");
+    }
+
+    @Test
+    public void answerWithQuestionLargest() {
+        ResponderModel responder = new ResponderModel();
+        String pregunta = "6dff3ce0: which of the following numbers is the largest: 5, 10";
+        String respuesta = responder.answer(pregunta);
+        Assertions.assertThat(respuesta).isEqualTo("10");
     }
 }
